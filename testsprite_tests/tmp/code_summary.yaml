@@ -1,0 +1,32 @@
+version: "2"
+type: frontend
+tech_stack:
+  - React
+  - Vite
+  - JavaScript
+  - CSS
+routes:
+  - path: /
+    file: src/App.jsx
+    auth_required: false
+    description: Main Terminal Portfolio Interface
+features:
+  - name: Terminal Portfolio Core
+    description: A web-based terminal interface acting as a portfolio
+    files:
+      - src/components/Terminal.jsx
+      - src/hooks/useTerminal.js
+      - src/App.jsx
+    entry_route: /
+    user_interactions:
+      - Type commands like help, ls, whoami, clear, cat, contact, socials
+      - Use Tab auto-completion for commands and project files
+      - Use up/down arrows for command history navigation
+      - Press Enter to execute a command empty input or long input
+      - Attempt command injections (e.g. <script>)
+      - Execute cat projects/vps.txt and cat projects/portfolio.txt
+      - Execute contact to see links
+      - View command outputs in the terminal display
+      - Verify auto-scroll to bottom of the feed
+    api_calls: []
+known_limitations: []

@@ -1,0 +1,1190 @@
+[
+  {
+    "id": "TC001",
+    "title": "Help command prints available commands and stays scrolled to the latest output",
+    "description": "Verifies that running the help command prints a list of commands with descriptions and the terminal view remains at the bottom after output is rendered.",
+    "category": "Main Terminal (Home)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"help\" into the terminal input prompt"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"help\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"whoami\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"clear\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "whoami command prints identity and bio information",
+    "description": "Verifies that running the whoami command prints an identity response and the prompt remains available for the next command.",
+    "category": "Main Terminal (Home)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"whoami\" into the terminal input prompt"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"whoami\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"terminal prompt\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "clear command clears the terminal buffer and leaves a fresh prompt",
+    "description": "Verifies that clear removes previous outputs from the terminal feed while keeping the prompt ready for the next command.",
+    "category": "Main Terminal (Home)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Type \"help\" into the terminal input prompt"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"help\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"clear\" into the terminal input prompt"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"help\" is not visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Unknown command shows a user-friendly error message",
+    "description": "Verifies that an unrecognized command produces an error/help hint and the prompt remains usable.",
+    "category": "Main Terminal (Home)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"thiscommanddoesnotexist\" into the terminal input prompt"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"thiscommanddoesnotexist\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"not found\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Command input trims extra whitespace and still runs",
+    "description": "Verifies that leading/trailing spaces do not prevent a valid command from executing.",
+    "category": "Main Terminal (Home)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"   help   \" into the terminal input prompt"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"help\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"whoami\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Empty Enter does not print an error and keeps prompt ready",
+    "description": "Verifies that pressing Enter with no command does not add an error output and the prompt stays active.",
+    "category": "Main Terminal (Home)",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"not found\" is not visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"error\" is not visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Terminal remains responsive after multiple sequential commands",
+    "description": "Verifies that the command buffer can handle multiple commands in a row and the prompt remains at the bottom for continued interaction.",
+    "category": "Main Terminal (Home)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Type \"help\" into the terminal input prompt"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "action",
+        "description": "Type \"whoami\" into the terminal input prompt"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"help\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"whoami\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "cat a nonexistent project file shows a 'No such file or directory' error",
+    "description": "Verifies that attempting to cat a missing project file prints a bash-style error message in the output area.",
+    "category": "Projects (ls ./projects and cat project files)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"terminal input\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"cat projects/nonexistent.txt\" into \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"No such file or directory\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"bash\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"cat\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "Commands preserve output history when running ls then cat",
+    "description": "Verifies that running ls followed by cat appends new output below the previous output in the same terminal feed.",
+    "category": "Projects (ls ./projects and cat project files)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"terminal input\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"ls ./projects\" into \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "action",
+        "description": "Type \"cat projects/portfolio.txt\" into \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"ls ./projects\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"cat projects/portfolio.txt\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Case-sensitive path handling for projects directory",
+    "description": "Verifies that an incorrectly cased projects path returns an error rather than listing files.",
+    "category": "Projects (ls ./projects and cat project files)",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"terminal input\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"ls ./Projects\" into \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"No such file or directory\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"bash\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Render Skills top view with table and fluctuating values",
+    "description": "Verifies that running the skills top command renders the process-monitor-style skill table with bars and changing numeric values.",
+    "category": "Skills (top -u skills)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"top -u skills\" into the terminal input"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"PID\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"USER\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify a skills table/output block is visible showing multiple rows with ASCII bar graphs"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify at least one numeric percentage/value field in the output is visible (for example a \"%CPU\"-style value)"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Auto-scroll to newest output after running skills top command",
+    "description": "Verifies the terminal feed scrolls to the bottom so the latest skills output is visible after execution.",
+    "category": "Skills (top -u skills)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"top -u skills\" into the terminal input"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the newest skills output section is visible near the bottom of the terminal feed"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the terminal prompt \"guest@sec-eng:~$\" is not the only visible recent line (i.e., output appears below/after the command)"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Unknown flag shows usage/help error for top command",
+    "description": "Verifies an invalid flag produces a visible error/usage message with guidance toward valid flags.",
+    "category": "Skills (top -u skills)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"top --unknownflag\" into the terminal input"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"unknown\" is visible in the output"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"usage\" is visible in the output"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"top\" is visible in the output indicating a help/usage line"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Skills output includes recognizable skill categories (languages/tools)",
+    "description": "Verifies the skills top output presents multiple skill rows that look like languages/tools with proficiency-style bars.",
+    "category": "Skills (top -u skills)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"top -u skills\" into the terminal input"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify multiple rows are visible that look like skill entries (e.g., names followed by bar graphs and numbers)"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify at least one bar graph made of repeated ASCII characters is visible in the output"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify at least two distinct skill entry names are visible on separate rows"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Running skills top command twice appends new output to the feed",
+    "description": "Verifies a second execution adds another output block to the terminal feed rather than replacing the original history.",
+    "category": "Skills (top -u skills)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"top -u skills\" into the terminal input"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify the skills top output/table is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"top -u skills\" into the terminal input"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify two separate occurrences of a header line such as \"PID\" are visible in the feed"
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Quit after unknown flag error leaves prompt usable",
+    "description": "Verifies that after an invalid flag error, the terminal remains interactive and the prompt accepts the next valid skills command.",
+    "category": "Skills (top -u skills)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng:~$\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"top --unknownflag\" into the terminal input"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"usage\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"top -u skills\" into the terminal input"
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"PID\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Traceroute me prints sequential hops and final contact URLs with auto-scroll",
+    "description": "Verifies that running 'traceroute me' prints hop-by-hop output, ends with contact links, and the terminal view auto-scrolls to the latest output.",
+    "category": "Contact (traceroute me)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"terminal input\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"traceroute me\" into \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"hop\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"github\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"linkedin\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"mailto\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "Traceroute me shows multiple hop lines (progressive output)",
+    "description": "Verifies that the command output includes multiple sequential hop lines rather than a single aggregated line.",
+    "category": "Contact (traceroute me)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Type \"traceroute me\" into \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"1\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"2\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"3\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"github\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "Traceroute unknown host shows unreachable error message",
+    "description": "Verifies that an invalid traceroute target returns a visible error message indicating the host is unreachable.",
+    "category": "Contact (traceroute me)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Type \"traceroute unknown-host\" into \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"host unreachable\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"github\" is not visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"linkedin\" is not visible"
+      }
+    ]
+  },
+  {
+    "id": "TC020",
+    "title": "Terminal remains usable after traceroute error",
+    "description": "Verifies that after an unreachable error, the user can still run 'traceroute me' successfully in the same session.",
+    "category": "Contact (traceroute me)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Type \"traceroute unknown-host\" into \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"host unreachable\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"traceroute me\" into \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press Enter"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"github\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC021",
+    "title": "Boot sequence auto-advances to main terminal prompt",
+    "description": "Verifies the boot overlay appears on first load, shows boot log output, then automatically transitions to the terminal prompt.",
+    "category": "Boot Sequence",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"boot\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"mount\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Wait for text \"guest@sec-eng\" to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"~$\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC022",
+    "title": "Click-to-skip boot immediately shows terminal prompt",
+    "description": "Verifies clicking during the boot overlay skips the sequence and reveals the main prompt without waiting for completion.",
+    "category": "Boot Sequence",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"boot\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click anywhere on the boot screen"
+      },
+      {
+        "type": "action",
+        "description": "Wait for text \"guest@sec-eng\" to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"~$\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC023",
+    "title": "Boot finishes and shows guest login auto-typed before prompt",
+    "description": "Verifies the end of the boot sequence includes a visible transition that results in the guest prompt being present.",
+    "category": "Boot Sequence",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"kernel\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Wait for text \"guest\" to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Wait for text \"guest@sec-eng\" to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC024",
+    "title": "Boot overlay is not shown once terminal prompt is visible",
+    "description": "Verifies that after the terminal prompt appears, boot-specific overlay content is no longer visible on screen.",
+    "category": "Boot Sequence",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for text \"guest@sec-eng\" to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"~$\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"kernel\" is not visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"mount\" is not visible"
+      }
+    ]
+  },
+  {
+    "id": "TC025",
+    "title": "Multiple clicks during boot still lands on a stable terminal prompt",
+    "description": "Verifies repeated user clicks do not break the transition and the prompt remains usable/visible.",
+    "category": "Boot Sequence",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"boot\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click anywhere on the boot screen"
+      },
+      {
+        "type": "action",
+        "description": "Click anywhere on the screen"
+      },
+      {
+        "type": "action",
+        "description": "Wait for text \"guest@sec-eng\" to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC026",
+    "title": "Skip interaction is accepted even late in the boot sequence",
+    "description": "Verifies that clicking to skip works near the end of the boot output and still results in the final terminal prompt.",
+    "category": "Boot Sequence",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"boot\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Wait for text \"mount\" to appear"
+      },
+      {
+        "type": "action",
+        "description": "Click anywhere on the boot screen"
+      },
+      {
+        "type": "action",
+        "description": "Wait for text \"guest@sec-eng\" to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"~$\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC027",
+    "title": "Performance/constrained-device fast-forward path results in terminal prompt after accepting skip",
+    "description": "Verifies that when a fast-forward/skip affordance is presented, accepting it transitions to the main terminal prompt.",
+    "category": "Boot Sequence",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Wait for text \"fast\" to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"fast\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"fast-forward\" or \"skip\" option if visible"
+      },
+      {
+        "type": "action",
+        "description": "Wait for text \"guest@sec-eng\" to appear"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"guest@sec-eng\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC028",
+    "title": "Tab auto-completes a partial command to a single match and executes it",
+    "description": "Verifies Tab completes a partial command when there is a single clear match and Enter runs the completed command showing output.",
+    "category": "Input Assistance (Tab auto-completion & Command History)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"terminal input\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"pr\" into \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press \"Tab\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"projects\" is visible in \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press \"Enter\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"terminal output\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"projects\" is visible in the terminal output area"
+      }
+    ]
+  },
+  {
+    "id": "TC029",
+    "title": "Tab shows multiple possible completions when input is ambiguous and does not change the input",
+    "description": "Verifies ambiguous Tab completion lists multiple matches (e.g., contact and cat) while keeping the typed prefix unchanged.",
+    "category": "Input Assistance (Tab auto-completion & Command History)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"terminal input\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"c\" into \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press \"Tab\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"contact\" is visible in the terminal output area"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"cat\" is visible in the terminal output area"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"c\" is visible in \"terminal input\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"contact\" is not visible in \"terminal input\""
+      }
+    ]
+  },
+  {
+    "id": "TC030",
+    "title": "Tab completion can be used after an ambiguous hint by typing more characters and completing again",
+    "description": "Verifies a user can disambiguate an ambiguous prefix by typing additional characters and then Tab-complete to the intended command.",
+    "category": "Input Assistance (Tab auto-completion & Command History)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"terminal input\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"c\" into \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press \"Tab\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"contact\" is visible in the terminal output area"
+      },
+      {
+        "type": "action",
+        "description": "Type \"o\" into \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press \"Tab\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"contact\" is visible in \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press \"Enter\""
+      }
+    ]
+  },
+  {
+    "id": "TC031",
+    "title": "Long command input does not crash the UI and produces a visible result",
+    "description": "Verifies entering a very long command and pressing Enter results in either execution output or a validation message without breaking the terminal UI.",
+    "category": "Input Assistance (Tab auto-completion & Command History)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"terminal input\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"a-very-long-command-name-exceeding-limit\" into \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press \"Enter\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"terminal output\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"terminal input\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"a-very-long-command-name-exceeding-limit\" is visible either in the command echo/history line or within the visible terminal output area"
+      }
+    ]
+  },
+  {
+    "id": "TC032",
+    "title": "Enter executes the current input and appends output below the prompt",
+    "description": "Verifies that pressing Enter on a normal command triggers a visible output update in the terminal.",
+    "category": "Input Assistance (Tab auto-completion & Command History)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"terminal output\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Type \"help\" into \"terminal input\""
+      },
+      {
+        "type": "action",
+        "description": "Press \"Enter\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"help\" is visible in the terminal output area"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"terminal input\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"help\" is visible in the terminal output area"
+      }
+    ]
+  }
+]

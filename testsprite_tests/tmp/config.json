@@ -1,0 +1,17 @@
+{
+  "status": "commited",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:4173",
+  "executionArgs": {
+    "projectName": "portfolio",
+    "projectPath": "c:\\Users\\Shalahuddin\\Documents\\portfolio",
+    "testIds": [],
+    "additionalInstruction": "Focus on edge cases: 1. Empty inputs (pressing enter without typing). 2. Very long random strings (e.g. typing 200+ characters). 3. Command injection attempts, such as typing '<script>alert(1)</script>', 'sudo rm -rf /', and '; ls -la'.",
+    "serverMode": "production",
+    "envs": {
+      "API_KEY": "sk-user-pBXRtrZ3nPiakcuNKC2a5n0kDcHjfSsrDfiy-EsASBBOYurhDsS0ZIjPaECGXVF_r_EpzRvKS9xuDAu1l6DgQ9mMyKYFoXi8_VQ9T4NpkwjmjXPjU21dC1ULt3rEfKlLWkQ"
+    }
+  },
+  "serverPort": 7932
+}

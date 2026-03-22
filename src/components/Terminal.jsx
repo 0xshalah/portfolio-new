@@ -10,11 +10,14 @@ const COMPLETABLE = [
   'ls -la',
   'ls ./projects',
   'clear',
-  'skills',
+  'cat',
+  'cat projects/vps.txt',
+  'cat projects/portfolio.txt',
   'contact',
+  'socials',
+  'skills',
   'nmap',
   'decrypt',
-  'cat',
   'sudo',
 ]
 

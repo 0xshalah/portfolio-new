@@ -99,6 +99,15 @@
   color: var(--color-warning);
 }
 
+.terminal-line--link {
+  color: var(--color-accent);
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.35);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(0, 255, 255, 0.4);
+  cursor: pointer;
+}
+
 /* ── Prompt Row ───────────────────────────────────────────────────────────── */
 .terminal__prompt-row {
   display: flex;

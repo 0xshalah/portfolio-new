@@ -1,0 +1,92 @@
+/* index.css — Global styles and design tokens for the terminal portfolio */
+
+/* ── Google Fonts are loaded in index.html ─────────────────────────────── */
+
+/* ── Design Tokens ────────────────────────────────────────────────────────── */
+:root {
+  --color-primary:    #00FF41;
+  --color-background: #050505;
+  --color-surface:    #0A0A0A;
+  --color-text:       #00FF41;
+  --color-muted:      #008F11;
+  --color-accent:     #00FFFF;
+  --color-error:      #FF3131;
+  --color-warning:    #FFD700;
+
+  --font-primary: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  --font-display: 'VT323', monospace;
+
+  --radius: 0px;
+  --spacing: 16px;
+  --glow: 0 0 5px rgba(0, 255, 65, 0.5);
+  --scanline-opacity: 0.08;
+  --crt-curve: perspective(1200px) rotateX(0.3deg);
+}
+
+/* ── Reset ────────────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ── Base ─────────────────────────────────────────────────────────────────── */
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  font-size: 16px;
+  /* Slightly overscanned CRT vibe around the whole viewport */
+  outline: 2px solid rgba(0, 255, 65, 0.05);
+  outline-offset: -4px;
+}
+
+/* ── Global Glitch Keyframes ─────────────────────────────────────────────── */
+@keyframes glitch {
+  0%   { transform: translate(0); }
+  20%  { transform: translate(-2px, 2px); }
+  40%  { transform: translate(-2px, -2px); }
+  60%  { transform: translate(2px, 2px); }
+  80%  { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+/* ── Accessibility ────────────────────────────────────────────────────────── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ── Selection ────────────────────────────────────────────────────────────── */
+::selection {
+  background-color: var(--color-muted);
+  color: var(--color-background);
+}
+
+/* ── Scrollbar (Global Fallback) ──────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-background);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-muted);
+}

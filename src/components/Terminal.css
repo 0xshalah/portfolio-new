@@ -1,0 +1,184 @@
+/* Terminal.css — Component-level styles for Terminal.jsx */
+
+/* ── Layout ──────────────────────────────────────────────────────────────── */
+.terminal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--color-background);
+  cursor: text;
+  /* CRT perspective warp */
+  transform: var(--crt-curve);
+}
+
+/* ── Scanline Overlay ─────────────────────────────────────────────────────── */
+.terminal__scanlines {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    rgba(0, 0, 0, var(--scanline-opacity)) 2px,
+    rgba(0, 0, 0, var(--scanline-opacity)) 4px
+  );
+}
+
+/* ── History Buffer ───────────────────────────────────────────────────────── */
+.terminal__history {
+  flex: 1;
+  overflow-y: auto;
+  padding: 24px 24px 8px;
+  /* Hide scrollbar visually but keep it functional */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-muted) transparent;
+}
+
+.terminal__history::-webkit-scrollbar {
+  width: 4px;
+}
+.terminal__history::-webkit-scrollbar-track {
+  background: transparent;
+}
+.terminal__history::-webkit-scrollbar-thumb {
+  background-color: var(--color-muted);
+  border-radius: 0;
+}
+
+/* ── History Lines ────────────────────────────────────────────────────────── */
+.terminal-line {
+  font-family: var(--font-primary);
+  font-size: 15px;
+  line-height: 1.6;
+  white-space: pre;
+  letter-spacing: 0.02em;
+}
+
+.terminal-line--output {
+  color: var(--color-text);
+  text-shadow: var(--glow);
+}
+
+.terminal-line--input {
+  color: var(--color-text);
+  text-shadow: var(--glow);
+  opacity: 0.85;
+}
+
+.terminal-line--ascii {
+  color: var(--color-primary);
+  text-shadow: 0 0 8px rgba(0, 255, 65, 0.7);
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.terminal-line--accent {
+  color: var(--color-accent);
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.4);
+}
+
+.terminal-line--muted {
+  color: var(--color-muted);
+}
+
+.terminal-line--dim {
+  color: #005a0a;
+}
+
+.terminal-line--error {
+  color: var(--color-error);
+  text-shadow: 0 0 5px rgba(255, 49, 49, 0.4);
+}
+
+.terminal-line--warning {
+  color: var(--color-warning);
+}
+
+/* ── Prompt Row ───────────────────────────────────────────────────────────── */
+.terminal__prompt-row {
+  display: flex;
+  align-items: center;
+  padding: 8px 24px 20px;
+  flex-shrink: 0;
+  font-family: var(--font-primary);
+  font-size: 15px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.terminal__prompt-user {
+  color: var(--color-accent);
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.4);
+}
+
+.terminal__prompt-at {
+  color: var(--color-muted);
+}
+
+.terminal__prompt-host {
+  color: var(--color-accent);
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.4);
+}
+
+.terminal__prompt-colon {
+  color: var(--color-muted);
+}
+
+.terminal__prompt-path {
+  color: var(--color-primary);
+  text-shadow: var(--glow);
+}
+
+.terminal__prompt-dollar {
+  color: var(--color-primary);
+  text-shadow: var(--glow);
+  margin-left: 4px;
+}
+
+/* ── Input Wrapper & Input ────────────────────────────────────────────────── */
+.terminal__input-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.terminal__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  caret-color: transparent; /* We use our own cursor */
+  color: var(--color-text);
+  font-family: var(--font-primary);
+  font-size: 15px;
+  text-shadow: var(--glow);
+  padding: 0;
+  margin: 0;
+  letter-spacing: 0.02em;
+  width: 100%;
+}
+
+/* ── Blinking Cursor ──────────────────────────────────────────────────────── */
+.terminal__cursor {
+  display: inline-block;
+  width: 9px;
+  height: 1.1em;
+  background-color: var(--color-primary);
+  box-shadow: var(--glow);
+  animation: blink 500ms step-end infinite;
+  vertical-align: text-bottom;
+  position: absolute;
+  left: 0;
+  pointer-events: none;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
